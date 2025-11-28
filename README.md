@@ -1,92 +1,86 @@
-# Personal To-Do List Application
+Personal To-Do List Application (CLI)
 
-A simple **Personal To-Do List Application** built with **Python**, designed as a mini-project for **VaultofCode Internship**.  
-This project demonstrates **Object-Oriented Programming (OOP)**, **file handling**, and building a **user-friendly CLI**.
+This is a simple, command-line interface (CLI) application for managing personal tasks. It allows users to add, view, mark as completed, and delete tasks. All task data is persisted locally in a JSON file between sessions, eliminating the need for a complex database setup.
 
----
+🚀 Getting Started
 
-## Features
+Prerequisites
 
-- **Task Management**
-  - Add tasks with a title, description, and category.
-  - Mark tasks as completed.
-  - Delete tasks.
+You need Python 3 installed on your machine.
 
-- **Categorization**
-  - Organize tasks into categories: Work, Personal, Urgent, Shopping, or Other.
+Installation and Setup
 
-- **Persistence**
-  - Tasks are saved to a local `tasks.json` file, retaining progress between sessions.
+Clone or download the project files.
 
-- **User-Friendly CLI**
-  - Simple command-line interface with clear menus and prompts.
+Navigate to the project directory in your terminal.
 
----
+The project structure should look like this:
 
-## Key Concepts Used
-
-- **Object-Oriented Programming (OOP)**
-  - Task class with attributes and methods.
-- **File Handling**
-  - Saving and loading tasks using JSON serialization.
-- **Dictionary Unpacking**
-  - Loading JSON data directly into Task objects.
-
----
-
-## Installation
-
-1. Ensure **Python 3.x** is installed on your system.
-2. Clone this repository or download the project files.
-3. (Optional) Create a virtual environment:
-
-```bash
-python -m venv .venv
-Activate the virtual environment:
-
-PowerShell:
-
-powershell
-Copy code
-.\.venv\Scripts\Activate.ps1
-CMD:
-
-c
-Copy code
-.\.venv\Scripts\activate.bat
-How to Run
-In the project directory, run:
-
-bash
-Copy code
-python todo.py
-Follow the on-screen menu to add, view, complete, or delete tasks.
-
-File Structure
-bash
-Copy code
-/todo_app
+/todo_app 
 ├── todo.py         # Main application logic
-├── tasks.json      # Stores tasks between sessions
-└── README.md       # Project documentation
-Sample Usage
-pgsql
-Copy code
-1. Add New Task
-2. View All Tasks
-3. Mark Task Completed
-4. Delete Task
-5. Exit and Save
-Example workflow:
+├── tasks.json      # File to store tasks (created automatically if not exists)
+└── README.md       # This file
 
-Add a task “Finish Assignment” under “Work” category.
 
-View the task in the list.
+Running the Application
 
-Mark it completed.
+Execute the main Python script from your terminal:
 
-Exit and save tasks in tasks.json.
+python todo.py
 
-Author
-Shaik Ruheena Kausar
-Built as a Python mini-project for VaultofCode Internship, focusing on CLI, OOP, and file handling.
+
+✨ Features
+
+The application provides a simple menu-driven interface with the following options:
+
+Option
+
+Command
+
+Description
+
+1
+
+Add New Task
+
+Prompts for a title, description, and a category (Work, Personal, Urgent, etc.) before adding the task to the list.
+
+2
+
+View All Tasks
+
+Displays the current list, clearly separating PENDING tasks (with indices for selection) and COMPLETED tasks.
+
+3
+
+Mark Task Completed
+
+Select a pending task by its index number to mark its status as [DONE].
+
+4
+
+Delete Task
+
+Select any task (pending or completed) by its index number to permanently remove it from the list.
+
+5
+
+Exit and Save
+
+Closes the application and automatically saves the current state of all tasks to the tasks.json file.
+
+📁 File Persistence
+
+Tasks are saved using JSON (JavaScript Object Notation) format in the tasks.json file.
+
+When the application starts, it attempts to load_tasks() from tasks.json.
+
+Before the application exits (Option 5), it calls save_tasks() to write the current list to the file, ensuring persistence across sessions.
+
+Developer Notes
+
+Task Class: A Task class is used to encapsulate task properties (title, description, category, completed).
+
+Serialization: The save_tasks function converts Task objects into simple Python dictionaries (task.__dict__) before saving them to JSON.
+
+Deserialization: The load_tasks function reads the dictionaries from the JSON file and uses dictionary unpacking (Task(**data)) to efficiently reconstruct the Task objects.

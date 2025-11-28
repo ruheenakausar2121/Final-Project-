@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Finish Assignment",
+        "description": "Complete the Python project",
+        "category": "Work",
+        "completed": true
+    },
+    {
+        "title": "Buy groceries",
+        "description": "Milk, eggs, and bread",
+        "category": "Shopping",
+        "completed": false
+    }
+]
